@@ -1,0 +1,26 @@
+@prefix xsd:            <http://www.w3.org/2001/XMLSchema#> .
+@prefix bcfOWL:         <http://lbd.arch.rwth-aachen.de/bcfOWL#> .
+@prefix inst:           <http://example.org/inst/> .
+@prefix project:        <http://example.org/inst/e8859173-f8ed-4df8-9c1d-5b2a38a34064/> .
+@prefix geo:            <http://www.opengis.net/ont/geosparql#> .
+
+project:Topic_1        a                bcfOWL:Topic ;                                                  
+        bcfOWL:hasCreationAuthor        project:Jyrki ;                                                     
+        bcfOWL:hasCreationDate          "2021-11-03T10:39:00.938Z"^^xsd:dateTime ;                          
+        bcfOWL:hasGuid                  "5f4431ac-7180-42d2-b316-0c49e07e3e8f" ;                        
+        bcfOWL:hasProject               project: ;                  
+        bcfOWL:hasTopicState            project:TopicState_1, project:TopicState_2 .
+
+project:TopicState_1    a               bcfOWL:TopicState;
+        bcfOWL:hasCreationDate          "2021-11-03T10:39:00.938Z"^^xsd:dateTime ;
+        bcfOWL:hasCreationAuthor        project:Jyrki ;
+        bcfOWL:hasTopic                 project:Topic_1;
+        bcfOWL:hasTitle                 "My First Issue" ;
+        bcfOWL:hasTopicStatus           project:Active .
+
+project:TopicState_1    a               bcfOWL:TopicState;
+        bcfOWL:hasCreationDate          "2021-11-04T11:17:00.938Z"^^xsd:dateTime ;
+        bcfOWL:hasCreationAuthor        project:Oliver ;
+        bcfOWL:hasTopic                 project:Topic_1;
+        bcfOWL:hasTitle                 "My First Issue" ;
+        bcfOWL:hasTopicStatus           project:Closed .
