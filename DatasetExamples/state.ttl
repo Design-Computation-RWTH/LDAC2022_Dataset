@@ -9,18 +9,28 @@ project:Topic_1        a                bcfOWL:Topic ;
         bcfOWL:hasCreationDate          "2021-11-03T10:39:00.938Z"^^xsd:dateTime ;                          
         bcfOWL:hasGuid                  "5f4431ac-7180-42d2-b316-0c49e07e3e8f" ;                        
         bcfOWL:hasProject               project: ;                  
-        bcfOWL:hasTopicState            project:TopicState_1, project:TopicState_2 .
+        bcfOWL:hasTopicState            project:TopicState_1, project:TopicState_2 , project:TopicState_3.
 
 project:TopicState_1    a               bcfOWL:TopicState;
         bcfOWL:hasCreationDate          "2021-11-03T10:39:00.938Z"^^xsd:dateTime ;
         bcfOWL:hasCreationAuthor        project:Jyrki ;
         bcfOWL:hasTopic                 project:Topic_1;
         bcfOWL:hasTitle                 "My First Issue" ;
+        bcfOWL:hasLabel                 project:Architecture, project:Heating;
         bcfOWL:hasTopicStatus           project:Active .
 
-project:TopicState_1    a               bcfOWL:TopicState;
+project:TopicState_2    a               bcfOWL:TopicState;
         bcfOWL:hasCreationDate          "2021-11-04T11:17:00.938Z"^^xsd:dateTime ;
         bcfOWL:hasCreationAuthor        project:Oliver ;
         bcfOWL:hasTopic                 project:Topic_1;
+        bcfOWL:hasLabel                 project:Architecture ;
         bcfOWL:hasTitle                 "My First Issue" ;
         bcfOWL:hasTopicStatus           project:Closed .
+
+project:TopicState_3    a               bcfOWL:TopicState;
+        bcfOWL:hasCreationDate          "2021-11-05T11:17:00.938Z"^^xsd:dateTime ;
+        bcfOWL:hasCreationAuthor        project:Jyrki ;
+        bcfOWL:hasTopic                 project:Topic_1;
+        bcfOWL:hasLabel                 project:Architecture, project:Documentation;
+        bcfOWL:hasTitle                 "My First Issue" ;
+        bcfOWL:hasTopicStatus           project:Active .

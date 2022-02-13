@@ -1,0 +1,72 @@
+@prefix xsd:            <http://www.w3.org/2001/XMLSchema#> .
+@prefix bcfOWL:         <http://lbd.arch.rwth-aachen.de/bcfOWL#> .
+@prefix inst:           <http://example.org/inst/> .
+@prefix project:        <http://example.org/inst/e8859173-f8ed-4df8-9c1d-5b2a38a34064/> .
+@prefix geo:            <http://www.opengis.net/ont/geosparql#> .
+
+
+
+project:Topic_1             a       bcfOWL:Topic ;
+                            bcfOWL:hasCreationAuthor            project:Jyrki ;
+                            bcfOWL:hasCreationDate              "2021-11-03T10:39:00.938Z"^^xsd:dateTime ;
+                            bcfOWL:hasGuid                      "5f4431ac-7180-42d2-b316-0c49e07e3e8f" ;
+                            bcfOWL:hasProject                   project: ;
+                            bcfOWL:hasModifiedDate              "2021-11-05T11:17:00.938Z"^^xsd:dateTime ;
+                            bcfOWL:hasTitle                     "My First Issue" ;
+                            bcfOWL:hasLabel                     project:Architecture, project:Documentation;
+                            bcfOWL:hasTopicStatus               project:Closed .
+
+project:TopicEvent_1        a       bcfOWL:TopicEvent;
+                            bcfOWL:hasTopic                     project:Topic_1 ;
+                            bcfOWL:hasCreationDate              "2021-11-03T10:39:00.938Z"^^xsd:dateTime ;
+                            bcfOWL:hasAuthor                    project:Jyrki ;
+                            bcfOWL:hasEventOperations           project:Event_1_Operation_1, project:Event_1_Operation_2 , project:Event_1_Operation_3, project:Event_1_Operation_4, project:Event_1_Operation_5 .
+
+project:Event_1_Operation_1    a       bcfOWL:EventOperation;
+                            bcfOWL:hasOperationType             bcfOWL:TopicCreated.
+
+project:Event_1_Operation_2    a       bcfOWL:EventOperation;
+                            bcfOWL:hasOperationType             bcfOWL:TitleUpdated ;
+                            bcfOWL:hasOperationValue            "My First Issue" .
+
+project:Event_1_Operation_3    a       bcfOWL:EventOperation;
+                            bcfOWL:hasOperationType             bcfOWL:StatusUpdated ;
+                            bcfOWL:hasOperationValue            project:Active .
+
+project:Event_1_Operation_4    a       bcfOWL:EventOperation;
+                            bcfOWL:hasOperationType             bcfOWL:LabelAdded ;
+                            bcfOWL:hasOperationValue            project:Architecture .
+
+project:Event_1_Operation_5    a       bcfOWL:EventOperation;
+                            bcfOWL:hasOperationType             bcfOWL:LabelAdded ;
+                            bcfOWL:hasOperationValue            project:Heating .
+
+
+project:TopicEvent_2        a       bcfOWL:TopicEvent;
+                            bcfOWL:hasTopic                     project:Topic_1 ;
+                            bcfOWL:hasCreationDate              "2021-11-04T11:17:00.938Z"^^xsd:dateTime ;
+                            bcfOWL:hasAuthor                    project:Oliver ;
+                            bcfOWL:hasEventOperations           project:Event_2_Operation_1, project:Event_2_Operation_2 .
+
+project:Event_2_Operation_1    a       bcfOWL:EventOperation;
+                            bcfOWL:hasOperationType             bcfOWL:StatusUpdated ;
+                            bcfOWL:hasOperationValue            project:Closed .
+
+project:Event_2_Operation_2    a       bcfOWL:EventOperation;
+                            bcfOWL:hasOperationType             bcfOWL:LabelRemoved ;
+                            bcfOWL:hasOperationValue            project:Heating .
+
+
+project:TopicEvent_3        a       bcfOWL:TopicEvent;
+                            bcfOWL:hasTopic                     project:Topic_1 ;
+                            bcfOWL:hasCreationDate              "2021-11-05T11:17:00.938Z"^^xsd:dateTime ;
+                            bcfOWL:hasAuthor                    project:Jyrki ;
+                            bcfOWL:hasEventOperations           project:Event_3_Operation_1, project:Event_3_Operation_2 .
+
+project:Event_3_Operation_1    a       bcfOWL:EventOperation;
+                            bcfOWL:hasOperationType             bcfOWL:StatusUpdated ;
+                            bcfOWL:hasOperationValue            project:Active .
+
+project:Event_3_Operation_2    a       bcfOWL:EventOperation;
+                            bcfOWL:hasOperationType             bcfOWL:LabelAdded ;
+                            bcfOWL:hasOperationValue            project:Documentation .
