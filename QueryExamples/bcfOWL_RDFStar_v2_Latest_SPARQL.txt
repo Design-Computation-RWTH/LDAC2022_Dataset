@@ -1,0 +1,16 @@
+PREFIX bcfOWL:         <http://lbd.arch.rwth-aachen.de/bcfOWL#> 
+
+SELECT ?topic  ?topic_p ?topic_o
+WHERE {
+  ?topic a bcfOWL:Topic  .
+  ?topic bcfOWL:hasGuid   "5f4431ac-7180-42d2-b316-0c49e07e3e8f" .   
+  {
+      SELECT ?topic_p ?topic_o (MAX(?updateDate) as ?latestTime) WHERE
+      {
+         << ?topic ?topic_p ?topic_o>> bcfOWL:change ?update .
+         ?update bcfOWL:hasState  bcfOWL:Active .        
+         ?update  bcfOWL:hasDate ?updateDate .
+       }
+      GROUP BY  ?topic_p ?topic_o 
+  }
+}

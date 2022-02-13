@@ -1,0 +1,48 @@
+@prefix xsd:            <http://www.w3.org/2001/XMLSchema#> .
+@prefix bcfOWL:         <http://lbd.arch.rwth-aachen.de/bcfOWL#> .
+@prefix inst:           <http://example.org/inst/> .
+@prefix project:        <http://example.org/inst/e8859173-f8ed-4df8-9c1d-5b2a38a34064/> .
+@prefix geo:            <http://www.opengis.net/ont/geosparql#> .
+@prefix rdf:            <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .	
+
+# Example: https://www.datasciencecentral.com/the-pros-and-cons-of-rdf-star-and-sparql-star/
+
+_:annotation1  bcfOWL:hasAuthor        project:Jyrki .                                                     
+_:annotation1  bcfOWL:hasDate          "2021-11-03T10:39:00.938Z"^^xsd:dateTime .
+_:annotation1  bcfOWL:hasState         bcfOWL:Active.
+
+
+_:annotation2  bcfOWL:hasAuthor        project:Oliver  .                                                     
+_:annotation2  bcfOWL:hasDate          "2021-11-04T11:17:00.938Z"^^xsd:dateTime  .
+_:annotation2  bcfOWL:hasState         bcfOWL:Removed.
+_:annotation2  rdf:comment             "Removed  " .
+
+
+_:annotation3  bcfOWL:hasAuthor        project:Oliver  .                                                     
+_:annotation3  bcfOWL:hasDate          "2021-11-05T11:17:00.938Z"^^xsd:dateTime  .
+_:annotation3  bcfOWL:hasState         bcfOWL:Active.
+_:annotation3  rdf:comment             "The label was set back" .
+
+_:annotation4  bcfOWL:hasAuthor        project:Jyrki .                                                     
+_:annotation4  bcfOWL:hasDate          "2021-11-04T11:17:00.938Z"^^xsd:dateTime .
+_:annotation4  bcfOWL:hasState         bcfOWL:Active .
+_:annotation4  rdf:comment             "Added new label" .
+
+
+
+project:Topic_1        a                bcfOWL:Topic ;                                                  
+        bcfOWL:hasCreationAuthor        project:Jyrki ;                                                     
+        bcfOWL:hasCreationDate          "2021-11-03T10:39:00.938Z"^^xsd:dateTime ;                          
+        bcfOWL:hasGuid                  "5f4431ac-7180-42d2-b316-0c49e07e3e8f" ;                        
+        bcfOWL:hasProject               project: ;               
+        bcfOWL:hasTopic                 project:Topic_1;
+        bcfOWL:hasTitle                 "My First Issue" ;
+        bcfOWL:hasLabel                project:Architecture {|
+                                                 bcfOWL:change _:annotation1 ; bcfOWL:change _:annotation2 ; bcfOWL:change _:annotation3
+                                       |} ;
+        bcfOWL:hasLabel                project:Heating {|
+                                                 bcfOWL:change _:annotation4 
+                                       |}
+
+                        .
+

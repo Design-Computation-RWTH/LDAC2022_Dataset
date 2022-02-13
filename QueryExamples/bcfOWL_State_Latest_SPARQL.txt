@@ -1,0 +1,17 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX bcfOWL:         <http://lbd.arch.rwth-aachen.de/bcfOWL#> 
+
+SELECT * WHERE {
+  ?topic a bcfOWL:Topic .
+  ?topic bcfOWL:hasGuid "5f4431ac-7180-42d2-b316-0c49e07e3e8f" .
+  ?state bcfOWL:hasCreationDate ?latestTime .
+  ?state ?p ?o .
+ { 
+     SELECT (MAX(?creationTime) as ?latestTime)  WHERE
+      {
+       ?topic bcfOWL:hasTopicState ?st .
+       ?st bcfOWL:hasCreationDate ?creationTime .
+     }
+}
+} 
