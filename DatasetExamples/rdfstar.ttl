@@ -13,13 +13,13 @@ project:Topic_1        a                bcfOWL:Topic ;
         bcfOWL:hasProject               project: ;               
         bcfOWL:hasTopic                 project:Topic_1;
         bcfOWL:hasTitle                 "My First Issue" ;
-        bcfOWL:hasLabel                project:Architecture ;
+        bcfOWL:hasLabel                project:Architecture  {|
                         bcfOWL:wasAdded "2021-11-03T10:39:00.938Z"^^xsd:dateTime
                                 {| 
                                         bcfOWL:hasCreationAuthor project:Jyrki 
-                                |}
+                                |} 
                         |} ;
-        bcfOWL:hasLabel                project:Heating ;
+        bcfOWL:hasLabel                project:Heating {|
                         bcfOWL:wasAdded "2021-11-03T10:39:00.938Z"^^xsd:dateTime
                                 {| 
                                         bcfOWL:hasCreationAuthor project:Jyrki 
@@ -27,13 +27,14 @@ project:Topic_1        a                bcfOWL:Topic ;
                         bcfOWL:wasRemoved "2021-11-04T11:17:00.938Z"^^xsd:dateTime 
                                 {|
                                         bcfOWL:hasCreationAuthor project:Oliver 
-                                |}
+                                |} 
                         |} ;
-        bcfOWL:hasLabel                project:Documentation ;
+        bcfOWL:hasLabel                project:Documentation {|
                         bcfOWL:wasAdded "2021-11-05T11:17:00.938Z"^^xsd:dateTime
                                 {| 
                                         bcfOWL:hasCreationAuthor project:Jyrki 
-                                |} ;
+                                |} 
+                        |} ;
         bcfOWL:hasTopicStatus           project:Active {|
                         bcfOWL:wasAdded "2021-11-03T10:39:00.938Z"^^xsd:dateTime
                                 {| 
@@ -42,7 +43,7 @@ project:Topic_1        a                bcfOWL:Topic ;
                         bcfOWL:wasRemoved "2021-11-04T11:17:00.938Z"^^xsd:dateTime 
                                 {|
                                         bcfOWL:hasCreationAuthor project:Oliver 
-                                |}
+                                |} 
                         |} ;
         bcfOWL:hasTopicStatus           project:Closed {|
                         bcfOWL:wasAdded "2021-11-04T11:17:00.938Z"^^xsd:dateTime 
@@ -52,11 +53,11 @@ project:Topic_1        a                bcfOWL:Topic ;
                         bcfOWL:wasRemoved "2021-11-05T11:17:00.938Z"^^xsd:dateTime 
                                 {|
                                         bcfOWL:hasCreationAuthor project:Jyrki 
-                                |}
+                                |} 
                         |} ;
         bcfOWL:hasTopicStatus           project:Active {|
                         bcfOWL:wasAdded "2021-11-05T11:17:00.938Z"^^xsd:dateTime 
                                 {|
                                         bcfOWL:hasCreationAuthor project:Jyrki 
-                                |}
+                                |} 
                         |} .
