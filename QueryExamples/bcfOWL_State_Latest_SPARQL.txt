@@ -1,17 +1,62 @@
+// Query current state
+
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX bcfOWL:         <http://lbd.arch.rwth-aachen.de/bcfOWL#> 
+PREFIX inst: <http://example.org/inst/e8859173-f8ed-4df8-9c1d-5b2a38a34064/>
 
-SELECT * WHERE {
-  ?topic a bcfOWL:Topic .
-  ?topic bcfOWL:hasGuid "5f4431ac-7180-42d2-b316-0c49e07e3e8f" .
+SELECT ?state ?p ?o WHERE {
+  inst:Topic_1 bcfOWL:hasTopicState ?state .
   ?state bcfOWL:hasCreationDate ?latestTime .
   ?state ?p ?o .
- { 
+	{ 
      SELECT (MAX(?creationTime) as ?latestTime)  WHERE
       {
-       ?topic bcfOWL:hasTopicState ?st .
+       inst:Topic_1 bcfOWL:hasTopicState ?st .
        ?st bcfOWL:hasCreationDate ?creationTime .
      }
-}
+  }
+} 
+
+// Query oldest state
+
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX bcfOWL:         <http://lbd.arch.rwth-aachen.de/bcfOWL#> 
+PREFIX inst: <http://example.org/inst/e8859173-f8ed-4df8-9c1d-5b2a38a34064/>
+
+SELECT ?state ?p ?o WHERE {
+  inst:Topic_1 bcfOWL:hasTopicState ?state .
+  ?state bcfOWL:hasCreationDate ?latestTime .
+  ?state ?p ?o .
+	{ 
+     SELECT (MIN(?creationTime) as ?latestTime)  WHERE
+      {
+       inst:Topic_1 bcfOWL:hasTopicState ?st .
+       ?st bcfOWL:hasCreationDate ?creationTime .
+     }
+  }
+} 
+
+// Query state at specific dateTime
+
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX bcfOWL:         <http://lbd.arch.rwth-aachen.de/bcfOWL#> 
+PREFIX inst: <http://example.org/inst/e8859173-f8ed-4df8-9c1d-5b2a38a34064/>
+
+SELECT ?state ?p ?o WHERE {
+  inst:Topic_1 bcfOWL:hasTopicState ?state .
+  ?state bcfOWL:hasCreationDate ?latestTime .
+  ?state ?p ?o .
+  	{ 
+     SELECT (Max(?creationTime) as ?latestTime)  WHERE
+      {
+       inst:Topic_1 bcfOWL:hasTopicState ?st .
+       ?st bcfOWL:hasCreationDate ?creationTime .
+      
+       FILTER (?creationTime <= "2021-11-04T17:17:00.938Z"^^xsd:dateTime)
+     }
+  }
 } 

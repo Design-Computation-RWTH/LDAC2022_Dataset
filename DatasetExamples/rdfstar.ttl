@@ -6,13 +6,30 @@
 
 # Example: https://www.datasciencecentral.com/the-pros-and-cons-of-rdf-star-and-sparql-star/
 
-project:Topic_1        a                bcfOWL:Topic ;                                                  
-        bcfOWL:hasCreationAuthor        project:Jyrki ;                                                     
-        bcfOWL:hasCreationDate          "2021-11-03T10:39:00.938Z"^^xsd:dateTime ;                          
-        bcfOWL:hasGuid                  "5f4431ac-7180-42d2-b316-0c49e07e3e8f" ;                        
-        bcfOWL:hasProject               project: ;               
-        bcfOWL:hasTopic                 project:Topic_1;
-        bcfOWL:hasTitle                 "My First Issue" ;
+project:Topic_1        a                bcfOWL:Topic {|
+                        bcfOWL:wasAdded "2021-11-03T10:39:00.938Z"^^xsd:dateTime
+                                {| 
+                                        bcfOWL:hasCreationAuthor project:Jyrki 
+                                |} 
+                        |} ;                                                                    
+        bcfOWL:hasGuid                  "5f4431ac-7180-42d2-b316-0c49e07e3e8f" {|
+                        bcfOWL:wasAdded "2021-11-03T10:39:00.938Z"^^xsd:dateTime
+                                {| 
+                                        bcfOWL:hasCreationAuthor project:Jyrki 
+                                |} 
+                        |} ;                        
+        bcfOWL:hasProject               project: {|
+                        bcfOWL:wasAdded "2021-11-03T10:39:00.938Z"^^xsd:dateTime
+                                {| 
+                                        bcfOWL:hasCreationAuthor project:Jyrki 
+                                |} 
+                        |} ;               
+        bcfOWL:hasTitle                 "My First Issue" {|
+                        bcfOWL:wasAdded "2021-11-03T10:39:00.938Z"^^xsd:dateTime
+                                {| 
+                                        bcfOWL:hasCreationAuthor project:Jyrki 
+                                |} 
+                        |} ;
         bcfOWL:hasLabel                project:Architecture  {|
                         bcfOWL:wasAdded "2021-11-03T10:39:00.938Z"^^xsd:dateTime
                                 {| 
