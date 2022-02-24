@@ -1,0 +1,69 @@
+// Select newest time
+
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX bcfOWL:         <http://lbd.arch.rwth-aachen.de/bcfOWL#> 
+PREFIX inst: 			<http://example.org/inst/e8859173-f8ed-4df8-9c1d-5b2a38a34064/>
+
+SELECT ?topic  ?topic_p ?topic_o ?author ?latestTime
+WHERE {  
+  BIND(inst:Topic_1 as ?topic)
+  ?topic ?topic_p ?topic_o .
+  << << ?topic ?topic_p ?topic_o >> ?operation ?latestTime >> bcfOWL:hasCreationAuthor ?author  .
+    << ?topic ?topic_p ?topic_o >> bcfOWL:wasAdded ?latestTime  
+  	{
+     SELECT ?topic_p ?topic_o (MAX(?creationTime) as ?latestTime) WHERE
+        {
+            {
+                << ?topic ?topic_p ?topic_o>> bcfOWL:wasAdded ?creationTime .  
+            } UNION {
+                << ?topic ?topic_p ?topic_o>> bcfOWL:wasRemoved ?creationTime .
+            }
+        }
+  				
+        GROUP BY  ?topic_p ?topic_o 
+    }
+
+} 
+
+// Select Initial Topic
+
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX bcfOWL:         <http://lbd.arch.rwth-aachen.de/bcfOWL#> 
+PREFIX inst: 			<http://example.org/inst/e8859173-f8ed-4df8-9c1d-5b2a38a34064/>
+
+SELECT ?topic  ?topic_p ?topic_o ?author ?initialTime
+WHERE {  
+  BIND(inst:Topic_1 as ?topic)
+  ?topic ?topic_p ?topic_o .
+  << << ?topic ?topic_p ?topic_o >> ?operation ?initialTime >> bcfOWL:hasCreationAuthor ?author  .
+    << ?topic a bcfOWL:Topic >> bcfOWL:wasAdded ?initialTime  
+} 
+
+
+// Select specific time
+
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX bcfOWL:         <http://lbd.arch.rwth-aachen.de/bcfOWL#> 
+PREFIX inst: 			<http://example.org/inst/e8859173-f8ed-4df8-9c1d-5b2a38a34064/>
+
+SELECT ?topic  ?topic_p ?topic_o ?author ?latestTime
+WHERE {  
+  BIND(inst:Topic_1 as ?topic)
+  ?topic ?topic_p ?topic_o .
+  << << ?topic ?topic_p ?topic_o >> ?operation ?latestTime >> bcfOWL:hasCreationAuthor ?author  .
+    << ?topic ?topic_p ?topic_o >> bcfOWL:wasAdded ?latestTime  
+  	{
+     SELECT ?topic_p ?topic_o (MAX(?creationTime) as ?latestTime) WHERE
+        {
+            {
+                << ?topic ?topic_p ?topic_o>> bcfOWL:wasAdded ?creationTime .  
+            } UNION {
+                << ?topic ?topic_p ?topic_o>> bcfOWL:wasRemoved ?creationTime .
+            }
+  			FILTER (?creationTime <= "2021-11-04T17:17:00.938Z"^^xsd:dateTime)
+        }
+  				
+        GROUP BY  ?topic_p ?topic_o 
+    }
+
+} 

@@ -1,0 +1,69 @@
+// Get Current one (Without Labels)
+
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX bcfOWL:         <http://lbd.arch.rwth-aachen.de/bcfOWL#> 
+PREFIX inst: 			<http://example.org/inst/e8859173-f8ed-4df8-9c1d-5b2a38a34064/>
+
+SELECT ?topic ?topic_p ?topic_o ?maxDate
+WHERE {
+    BIND(inst:Topic_1 as ?topic)
+  
+  	?event a bcfOWL:TopicEvent ;
+  			bcfOWL:hasTopic ?topic ;
+  			bcfOWL:hasCreationDate ?maxDate ;
+  			bcfOWL:hasEventOperations ?operation .
+    ?operation ?topic_p ?topic_o .
+   {?operation bcfOWL:hasOperationType  bcfOWL:Updated} UNION {?operation bcfOWL:hasOperationType bcfOWL:Added}
+
+  FILTER(!(?topic_o= bcfOWL:EventOperation))
+
+    {
+    SELECT ?topic ?topic_p (MAX(?date) as ?maxDate) WHERE {
+    
+  		?event	a	bcfOWL:TopicEvent;
+  				bcfOWL:hasTopic	?topic;
+      			bcfOWL:hasCreationDate ?date ;
+  				bcfOWL:hasEventOperations	?operation .
+  		?operation	a	bcfOWL:EventOperation;
+      			?topic_p	?topic_o2
+      FILTER(!(?topic_p = bcfOWL:hasLabel) && !(?topic_p = bcfOWL:hasOperationType))
+    }
+	GROUP BY ?topic ?topic_p 
+    }
+}
+
+
+
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX bcfOWL:         <http://lbd.arch.rwth-aachen.de/bcfOWL#> 
+PREFIX inst: 			<http://example.org/inst/e8859173-f8ed-4df8-9c1d-5b2a38a34064/>
+
+SELECT ?topic ?topic_p ?topic_o ?maxDate ?date
+WHERE {
+  {
+    ?topic ?topic_p ?topic_o
+    {
+    SELECT ?topic ?topic_p (MAX(?date) as ?maxDate) WHERE {
+      BIND(inst:Topic_1 as ?topic)
+  		?event	a	bcfOWL:TopicEvent;
+  				bcfOWL:hasTopic	?topic;
+      			bcfOWL:hasCreationDate ?date ;
+  				bcfOWL:hasEventOperations	?operation .
+  		?operation	a	bcfOWL:EventOperation;
+      			?topic_p	?topic_o
+      FILTER(!(?topic_p = bcfOWL:hasLabel) && !(?topic_p = bcfOWL:hasOperationType))
+    }
+	GROUP BY ?topic ?topic_p 
+    }} UNION {
+  	SELECT ?topic ?topic_p ?topic_o ?date WHERE {
+      BIND(inst:Topic_1 as ?topic)
+      BIND(bcfOWL:hasLabel as ?topic_p)
+  		?event	a	bcfOWL:TopicEvent;
+  				bcfOWL:hasTopic	?topic;
+      			bcfOWL:hasCreationDate ?date ;
+  				bcfOWL:hasEventOperations	?operation .
+  		?operation	a	bcfOWL:EventOperation;
+      			?topic_p	?topic_o
+  }
+}
+}

@@ -1,23 +1,66 @@
-PREFIX bcfOWL:         <http://lbd.arch.rwth-aachen.de/bcfOWL#> 
+// Select newest time
 
-SELECT ?topic  ?topic_p ?topic_o
-WHERE {
-  ?topic a bcfOWL:Topic  .
-  ?topic bcfOWL:hasGuid   "5f4431ac-7180-42d2-b316-0c49e07e3e8f" .   
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX bcfOWL:         <http://lbd.arch.rwth-aachen.de/bcfOWL#> 
+PREFIX inst: 			<http://example.org/inst/e8859173-f8ed-4df8-9c1d-5b2a38a34064/>
+
+SELECT ?topic  ?topic_p ?topic_o ?author ?latestTime
+WHERE {  
+  BIND(inst:Topic_1 as ?topic)
+  ?topic ?topic_p ?topic_o .
+  << ?topic ?topic_p ?topic_o >> bcfOWL:change [bcfOWL:hasState	bcfOWL:wasAdded;
+  												bcfOWL:hasAuthor ?author ;
+												bcfOWL:hasDate ?latestTime	] .
   {
-      SELECT ?topic_p ?topic_o WHERE
-      {             
-  		?update  bcfOWL:hasState         bcfOWL:Active. 
-      		?update  bcfOWL:hasDate ?latestUpdatetime .
-            {
-            
-            SELECT ?topic_p ?topic_o (MAX(?updateDate) as ?latestUpdatetime) WHERE
+   SELECT ?topic_p ?topic_o (MAX(?creationTime) as ?latestTime) WHERE
                {
                   << ?topic ?topic_p ?topic_o>> bcfOWL:change ?u .
-                  ?u  bcfOWL:hasDate ?updateDate .
+                  ?u  bcfOWL:hasDate ?creationTime .
+  
                 }
                 GROUP BY  ?topic_p ?topic_o 
             }
-    } 
-    }
-}
+} 
+
+// Select Initial Topic
+
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX bcfOWL:         <http://lbd.arch.rwth-aachen.de/bcfOWL#> 
+PREFIX inst: 			<http://example.org/inst/e8859173-f8ed-4df8-9c1d-5b2a38a34064/>
+
+SELECT ?topic  ?topic_p ?topic_o ?author ?latestTime ?topicCreationDate
+WHERE {  
+  BIND(inst:Topic_1 as ?topic)
+  ?topic ?topic_p ?topic_o .
+  << ?topic ?topic_p ?topic_o >> bcfOWL:change [bcfOWL:hasState	bcfOWL:wasAdded;
+  												bcfOWL:hasAuthor ?author ;
+												bcfOWL:hasDate ?topicCreationDate	] .
+  << ?topic a bcfOWL:Topic >> bcfOWL:change [bcfOWL:hasDate ?topicCreationDate	] .
+ 
+} 
+
+
+// Select specific time
+
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX bcfOWL:         <http://lbd.arch.rwth-aachen.de/bcfOWL#> 
+PREFIX inst: 			<http://example.org/inst/e8859173-f8ed-4df8-9c1d-5b2a38a34064/>
+
+SELECT ?topic  ?topic_p ?topic_o ?author ?latestTime
+WHERE {  
+  BIND(inst:Topic_1 as ?topic)
+  ?topic ?topic_p ?topic_o .
+  << ?topic ?topic_p ?topic_o >> bcfOWL:change [bcfOWL:hasState	bcfOWL:wasAdded;
+  												bcfOWL:hasAuthor ?author ;
+												bcfOWL:hasDate ?latestTime	] .
+  {
+   SELECT ?topic_p ?topic_o (MAX(?creationTime) as ?latestTime) WHERE
+               {
+                  << ?topic ?topic_p ?topic_o>> bcfOWL:change ?u .
+                  ?u  bcfOWL:hasDate ?creationTime .
+  
+  				FILTER (?creationTime <= "2021-11-04T17:17:00.938Z"^^xsd:dateTime)
+                }
+                GROUP BY  ?topic_p ?topic_o 
+            }
+} 

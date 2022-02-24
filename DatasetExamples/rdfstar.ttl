@@ -6,20 +6,37 @@
 
 # Example: https://www.datasciencecentral.com/the-pros-and-cons-of-rdf-star-and-sparql-star/
 
-project:Topic_1        a                bcfOWL:Topic ;                                                  
-        bcfOWL:hasCreationAuthor        project:Jyrki ;                                                     
-        bcfOWL:hasCreationDate          "2021-11-03T10:39:00.938Z"^^xsd:dateTime ;                          
-        bcfOWL:hasGuid                  "5f4431ac-7180-42d2-b316-0c49e07e3e8f" ;                        
-        bcfOWL:hasProject               project: ;               
-        bcfOWL:hasTopic                 project:Topic_1;
-        bcfOWL:hasTitle                 "My First Issue" ;
-        bcfOWL:hasLabel                project:Architecture ;
+project:Topic_1        a                bcfOWL:Topic {|
                         bcfOWL:wasAdded "2021-11-03T10:39:00.938Z"^^xsd:dateTime
                                 {| 
                                         bcfOWL:hasCreationAuthor project:Jyrki 
-                                |}
+                                |} 
+                        |} ;                                                                    
+        bcfOWL:hasGuid                  "5f4431ac-7180-42d2-b316-0c49e07e3e8f" {|
+                        bcfOWL:wasAdded "2021-11-03T10:39:00.938Z"^^xsd:dateTime
+                                {| 
+                                        bcfOWL:hasCreationAuthor project:Jyrki 
+                                |} 
+                        |} ;                        
+        bcfOWL:hasProject               project: {|
+                        bcfOWL:wasAdded "2021-11-03T10:39:00.938Z"^^xsd:dateTime
+                                {| 
+                                        bcfOWL:hasCreationAuthor project:Jyrki 
+                                |} 
+                        |} ;               
+        bcfOWL:hasTitle                 "My First Issue" {|
+                        bcfOWL:wasAdded "2021-11-03T10:39:00.938Z"^^xsd:dateTime
+                                {| 
+                                        bcfOWL:hasCreationAuthor project:Jyrki 
+                                |} 
                         |} ;
-        bcfOWL:hasLabel                project:Heating ;
+        bcfOWL:hasLabel                project:Architecture  {|
+                        bcfOWL:wasAdded "2021-11-03T10:39:00.938Z"^^xsd:dateTime
+                                {| 
+                                        bcfOWL:hasCreationAuthor project:Jyrki 
+                                |} 
+                        |} ;
+        bcfOWL:hasLabel                project:Heating {|
                         bcfOWL:wasAdded "2021-11-03T10:39:00.938Z"^^xsd:dateTime
                                 {| 
                                         bcfOWL:hasCreationAuthor project:Jyrki 
@@ -27,13 +44,14 @@ project:Topic_1        a                bcfOWL:Topic ;
                         bcfOWL:wasRemoved "2021-11-04T11:17:00.938Z"^^xsd:dateTime 
                                 {|
                                         bcfOWL:hasCreationAuthor project:Oliver 
-                                |}
+                                |} 
                         |} ;
-        bcfOWL:hasLabel                project:Documentation ;
+        bcfOWL:hasLabel                project:Documentation {|
                         bcfOWL:wasAdded "2021-11-05T11:17:00.938Z"^^xsd:dateTime
                                 {| 
                                         bcfOWL:hasCreationAuthor project:Jyrki 
-                                |} ;
+                                |} 
+                        |} ;
         bcfOWL:hasTopicStatus           project:Active {|
                         bcfOWL:wasAdded "2021-11-03T10:39:00.938Z"^^xsd:dateTime
                                 {| 
@@ -42,7 +60,7 @@ project:Topic_1        a                bcfOWL:Topic ;
                         bcfOWL:wasRemoved "2021-11-04T11:17:00.938Z"^^xsd:dateTime 
                                 {|
                                         bcfOWL:hasCreationAuthor project:Oliver 
-                                |}
+                                |} 
                         |} ;
         bcfOWL:hasTopicStatus           project:Closed {|
                         bcfOWL:wasAdded "2021-11-04T11:17:00.938Z"^^xsd:dateTime 
@@ -52,11 +70,11 @@ project:Topic_1        a                bcfOWL:Topic ;
                         bcfOWL:wasRemoved "2021-11-05T11:17:00.938Z"^^xsd:dateTime 
                                 {|
                                         bcfOWL:hasCreationAuthor project:Jyrki 
-                                |}
+                                |} 
                         |} ;
         bcfOWL:hasTopicStatus           project:Active {|
                         bcfOWL:wasAdded "2021-11-05T11:17:00.938Z"^^xsd:dateTime 
                                 {|
                                         bcfOWL:hasCreationAuthor project:Jyrki 
-                                |}
+                                |} 
                         |} .
