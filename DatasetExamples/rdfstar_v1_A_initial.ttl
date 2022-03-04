@@ -40,10 +40,12 @@ project:Topic_1        a                bcfOWL:Topic {|
                         bcfOWL:wasAdded "2021-11-03T10:39:00.938Z"^^xsd:dateTime
                                 {| 
                                         bcfOWL:hasCreationAuthor project:Jyrki 
-                                |} ;
+                                |} 
+                        |} ;
                         
         bcfOWL:hasTopicStatus           project:Active {|
                         bcfOWL:wasAdded "2021-11-03T10:39:00.938Z"^^xsd:dateTime
                                 {| 
                                         bcfOWL:hasCreationAuthor project:Jyrki 
-                                |} ;                        
+                                 |} 
+                        |} .
