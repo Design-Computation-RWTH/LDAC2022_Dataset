@@ -1,0 +1,84 @@
+@prefix xsd:            <http://www.w3.org/2001/XMLSchema#> .
+@prefix bcfOWL:         <http://lbd.arch.rwth-aachen.de/bcfOWL#> .
+@prefix inst:           <http://example.org/inst/> .
+@prefix project:        <http://example.org/inst/e8859173-f8ed-4df8-9c1d-5b2a38a34064/> .
+@prefix geo:            <http://www.opengis.net/ont/geosparql#> .
+@prefix rdf:            <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .	
+
+# Example: https://www.datasciencecentral.com/the-pros-and-cons-of-rdf-star-and-sparql-star/
+
+# Initial State
+inst:annotation0  bcfOWL:hasAuthor        project:Jyrki .                                                     
+inst:annotation0  bcfOWL:hasDate          "2021-11-03T10:39:00.938Z"^^xsd:dateTime .
+inst:annotation0  bcfOWL:hasState         bcfOWL:wasAdded.
+
+inst:annotation1  bcfOWL:hasAuthor        project:Jyrki .                                                     
+inst:annotation1  bcfOWL:hasDate          "2021-11-03T10:39:00.938Z"^^xsd:dateTime .
+inst:annotation1  bcfOWL:hasState         bcfOWL:wasAdded.
+
+inst:annotation2  bcfOWL:hasAuthor        project:Jyrki  .                                                     
+inst:annotation2  bcfOWL:hasDate          "2021-11-03T10:39:00.938Z"^^xsd:dateTime  .
+inst:annotation2  bcfOWL:hasState         bcfOWL:wasAdded.
+inst:annotation2  rdf:comment             "Added Label" .
+
+inst:annotation3  bcfOWL:hasAuthor        project:Jyrki .                                                     
+inst:annotation3  bcfOWL:hasDate          "2021-11-03T10:39:00.938Z"^^xsd:dateTime .
+inst:annotation3  bcfOWL:hasState         bcfOWL:wasAdded .
+
+# Second State
+
+inst:annotation4  bcfOWL:hasAuthor        project:Oliver  .                                                     
+inst:annotation4  bcfOWL:hasDate          "2021-11-04T11:17:00.938Z"^^xsd:dateTime  .
+inst:annotation4  bcfOWL:hasState         bcfOWL:wasRemoved.
+
+inst:annotation5  bcfOWL:hasAuthor        project:Oliver  .                                                     
+inst:annotation5  bcfOWL:hasDate          "2021-11-04T11:17:00.938Z"^^xsd:dateTime  .
+inst:annotation5  bcfOWL:hasState         bcfOWL:wasAdded.
+
+inst:annotation6  bcfOWL:hasAuthor        project:Oliver  .                                                     
+inst:annotation6  bcfOWL:hasDate          "2021-11-04T11:17:00.938Z"^^xsd:dateTime  .
+inst:annotation6  bcfOWL:hasState         bcfOWL:wasRemoved .
+
+# Final State
+
+inst:annotation7  bcfOWL:hasAuthor        project:Jyrki  .                                                     
+inst:annotation7  bcfOWL:hasDate          "2021-11-05T11:17:00.938Z"^^xsd:dateTime  .
+inst:annotation7  bcfOWL:hasState         bcfOWL:wasRemoved.
+
+inst:annotation8  bcfOWL:hasAuthor        project:Jyrki  .                                                     
+inst:annotation8  bcfOWL:hasDate          "2021-11-05T11:17:00.938Z"^^xsd:dateTime  .
+inst:annotation8  bcfOWL:hasState         bcfOWL:wasAdded.
+
+inst:annotation9  bcfOWL:hasAuthor        project:Jyrki .                                                     
+inst:annotation9  bcfOWL:hasDate          "2021-11-05T11:17:00.938Z"^^xsd:dateTime .
+inst:annotation9  bcfOWL:hasState         bcfOWL:wasAdded .
+
+inst:annotation-1  bcfOWL:hasAuthor        project:Jyrki .                                                     
+inst:annotation-1  bcfOWL:hasDate          "2021-11-03T10:39:00.938Z"^^xsd:dateTime  .
+inst:annotation-1  bcfOWL:hasState         bcfOWL:wasAdded .
+
+project:Topic_1        a                bcfOWL:Topic  {|
+                                                        bcfOWL:change inst:annotation-1
+                                                        |} ;                                                                         
+        bcfOWL:hasGuid                  "5f4431ac-7180-42d2-b316-0c49e07e3e8f" ;                        
+        bcfOWL:hasProject               project: ;               
+        bcfOWL:hasTitle                 "My First Issue" {|
+                                                 bcfOWL:change inst:annotation0 ;
+                                       |} ;
+        bcfOWL:hasTopicStatus           project:Active {|
+                                                 bcfOWL:change inst:annotation1  ; bcfOWL:change inst:annotation4 ; bcfOWL:change inst:annotation8
+                                       |} ;
+        bcfOWL:hasTopicStatus           project:Closed {|
+                                                 bcfOWL:change inst:annotation5 ; bcfOWL:change inst:annotation7
+                                       |} ;
+        bcfOWL:hasLabel                project:Architecture {|
+                                                 bcfOWL:change inst:annotation2 ;
+                                       |} ;
+        bcfOWL:hasLabel                project:Heating {|
+                                                 bcfOWL:change inst:annotation3 ; bcfOWL:change inst:annotation6
+                                       |};
+        bcfOWL:hasLabel                project:Documentation {|
+                                                 bcfOWL:change inst:annotation9
+                                       |}
+                        .
+

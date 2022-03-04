@@ -60,6 +60,10 @@ project:Topic_1        a                bcfOWL:Topic {|
                         bcfOWL:wasRemoved "2021-11-04T11:17:00.938Z"^^xsd:dateTime 
                                 {|
                                         bcfOWL:hasCreationAuthor project:Oliver 
+                                |} ;
+                        bcfOWL:wasAdded "2021-11-05T11:17:00.938Z"^^xsd:dateTime 
+                                {|
+                                        bcfOWL:hasCreationAuthor project:Jyrki 
                                 |} 
                         |} ;
         bcfOWL:hasTopicStatus           project:Closed {|
@@ -68,12 +72,6 @@ project:Topic_1        a                bcfOWL:Topic {|
                                         bcfOWL:hasCreationAuthor project:Oliver 
                                 |} ;
                         bcfOWL:wasRemoved "2021-11-05T11:17:00.938Z"^^xsd:dateTime 
-                                {|
-                                        bcfOWL:hasCreationAuthor project:Jyrki 
-                                |} 
-                        |} ;
-        bcfOWL:hasTopicStatus           project:Active {|
-                        bcfOWL:wasAdded "2021-11-05T11:17:00.938Z"^^xsd:dateTime 
                                 {|
                                         bcfOWL:hasCreationAuthor project:Jyrki 
                                 |} 

@@ -16,6 +16,11 @@ project:TopicEvent_1  a            bcfOWL:TopicEvent ;
         bcfOWL:hasEventOperations  project:Event_1_Operation_1 , project:Event_1_Operation_2 , project:Event_1_Operation_3 , project:Event_1_Operation_4 , project:Event_1_Operation_5 ;
         bcfOWL:hasTopic            project:Topic_1 .
 
+project:Event_1_Operation_1
+        a                        bcfOWL:EventOperation ;
+        bcfOWL:hasOperationType  bcfOWL:Added ;
+        bcfOWL:hasPriority       project:High .
+
 project:Event_1_Operation_2
         a                        bcfOWL:EventOperation ;
         bcfOWL:hasOperationType  bcfOWL:Updated ;
@@ -55,7 +60,7 @@ project:Event_2_Operation_2
 project:TopicEvent_3  a            bcfOWL:TopicEvent ;
         bcfOWL:hasAuthor           project:Jyrki ;
         bcfOWL:hasCreationDate     "2021-11-05T11:17:00.938Z"^^xsd:dateTime ;
-        bcfOWL:hasEventOperations  project:Event_3_Operation_1 , project:Event_3_Operation_2 , project:Event_3_Operation_22 ;
+        bcfOWL:hasEventOperations  project:Event_3_Operation_1 , project:Event_3_Operation_2 , project:Event_3_Operation_3 ;
         bcfOWL:hasTopic            project:Topic_1 .
 
 project:Event_3_Operation_1
@@ -68,12 +73,8 @@ project:Event_3_Operation_2
         bcfOWL:hasLabel          project:Documentation ;
         bcfOWL:hasOperationType  bcfOWL:Added .
 
-project:Event_1_Operation_11
-        a                        bcfOWL:EventOperation ;
-        bcfOWL:hasOperationType  bcfOWL:Added ;
-        bcfOWL:hasPriority       project:High .
 
-project:Event_3_Operation_22
+project:Event_3_Operation_3
         a                        bcfOWL:EventOperation ;
         bcfOWL:hasOperationType  bcfOWL:Removed ;
         bcfOWL:hasPriority       project:High .

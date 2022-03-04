@@ -1,0 +1,47 @@
+@prefix xsd:            <http://www.w3.org/2001/XMLSchema#> .
+@prefix bcfOWL:         <http://lbd.arch.rwth-aachen.de/bcfOWL#> .
+@prefix inst:           <http://example.org/inst/> .
+@prefix project:        <http://example.org/inst/e8859173-f8ed-4df8-9c1d-5b2a38a34064/> .
+@prefix geo:            <http://www.opengis.net/ont/geosparql#> .
+@prefix rdf:            <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .	
+
+# Example: https://www.datasciencecentral.com/the-pros-and-cons-of-rdf-star-and-sparql-star/
+
+# Initial State
+inst:annotation0  bcfOWL:hasAuthor        project:Jyrki .                                                     
+inst:annotation0  bcfOWL:hasDate          "2021-11-03T10:39:00.938Z"^^xsd:dateTime .
+inst:annotation0  bcfOWL:hasState         bcfOWL:wasAdded.
+
+inst:annotation1  bcfOWL:hasAuthor        project:Jyrki .                                                     
+inst:annotation1  bcfOWL:hasDate          "2021-11-03T10:39:00.938Z"^^xsd:dateTime .
+inst:annotation1  bcfOWL:hasState         bcfOWL:wasAdded.
+
+inst:annotation2  bcfOWL:hasAuthor        project:Jyrki  .                                                     
+inst:annotation2  bcfOWL:hasDate          "2021-11-03T10:39:00.938Z"^^xsd:dateTime  .
+inst:annotation2  bcfOWL:hasState         bcfOWL:wasAdded.
+
+inst:annotation3  bcfOWL:hasAuthor        project:Jyrki .                                                     
+inst:annotation3  bcfOWL:hasDate          "2021-11-03T10:39:00.938Z"^^xsd:dateTime .
+inst:annotation3  bcfOWL:hasState         bcfOWL:wasAdded .
+
+
+project:Topic_1        a                bcfOWL:Topic  {|
+                                                        bcfOWL:change inst:annotation-1
+                                                        |} ;                                                                         
+        bcfOWL:hasGuid                  "5f4431ac-7180-42d2-b316-0c49e07e3e8f" ;                        
+        bcfOWL:hasProject               project: ;               
+        bcfOWL:hasTitle                 "My First Issue" {|
+                                                 bcfOWL:change inst:annotation0 ;
+                                       |} ;
+        bcfOWL:hasTopicStatus           project:Active {|
+                                                 bcfOWL:change inst:annotation1  ; 
+                                       |} ;
+        bcfOWL:hasLabel                project:Architecture {|
+                                                 bcfOWL:change inst:annotation2 ;
+                                       |} ;
+        bcfOWL:hasLabel                project:Heating {|
+                                                 bcfOWL:change inst:annotation3 
+                                       |};
+        
+                        .
+

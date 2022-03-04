@@ -1,0 +1,46 @@
+@prefix bcfOWL:  <http://lbd.arch.rwth-aachen.de/bcfOWL#> .
+@prefix geo:     <http://www.opengis.net/ont/geosparql#> .
+@prefix inst:    <http://example.org/inst/> .
+@prefix project: <http://example.org/inst/e8859173-f8ed-4df8-9c1d-5b2a38a34064/> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+
+project:Topic_1  a                bcfOWL:Topic ;
+        bcfOWL:hasCreationAuthor  project:Jyrki ;
+        bcfOWL:hasCreationDate    "2021-11-03T10:39:00.938Z"^^xsd:dateTime ;
+        bcfOWL:hasGuid            "5f4431ac-7180-42d2-b316-0c49e07e3e8f" ;
+        bcfOWL:hasProject         project: .
+
+project:TopicEvent_1  a            bcfOWL:TopicEvent ;
+        bcfOWL:hasAuthor           project:Jyrki ;
+        bcfOWL:hasCreationDate     "2021-11-03T10:39:00.938Z"^^xsd:dateTime ;
+        bcfOWL:hasEventOperations  project:Event_1_Operation_1 , project:Event_1_Operation_2 , project:Event_1_Operation_3 , project:Event_1_Operation_4 , project:Event_1_Operation_5 ;
+        bcfOWL:hasTopic            project:Topic_1 .
+
+project:Event_1_Operation_1
+        a                        bcfOWL:EventOperation ;
+        bcfOWL:hasOperationType  bcfOWL:Added ;
+        bcfOWL:hasPriority       project:High .
+
+project:Event_1_Operation_2
+        a                        bcfOWL:EventOperation ;
+        bcfOWL:hasOperationType  bcfOWL:Updated ;
+        bcfOWL:hasTitle          "My First Issue" .
+
+project:Event_1_Operation_3
+        a                        bcfOWL:EventOperation ;
+        bcfOWL:hasOperationType  bcfOWL:Updated ;
+        bcfOWL:hasStatus         project:Active .
+
+project:Event_1_Operation_4
+        a                        bcfOWL:EventOperation ;
+        bcfOWL:hasLabel          project:Architecture ;
+        bcfOWL:hasOperationType  bcfOWL:Added .
+
+project:Event_1_Operation_5
+        a                        bcfOWL:EventOperation ;
+        bcfOWL:hasLabel          project:Heating ;
+        bcfOWL:hasOperationType  bcfOWL:Added .
+
+
+
+
