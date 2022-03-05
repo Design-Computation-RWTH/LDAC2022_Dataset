@@ -38,6 +38,10 @@ inst:annotation6  bcfOWL:hasAuthor        project:Oliver  .
 inst:annotation6  bcfOWL:hasDate          "2021-11-04T11:17:00.938Z"^^xsd:dateTime  .
 inst:annotation6  bcfOWL:hasState         bcfOWL:wasRemoved .
 
+inst:annotation-1  bcfOWL:hasAuthor        project:Jyrki .                                                     
+inst:annotation-1  bcfOWL:hasDate          "2021-11-03T10:39:00.938Z"^^xsd:dateTime  .
+inst:annotation-1  bcfOWL:hasState         bcfOWL:wasAdded .
+
 
 project:Topic_1        a                bcfOWL:Topic  {|
                                                         bcfOWL:change inst:annotation-1

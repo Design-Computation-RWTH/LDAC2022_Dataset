@@ -24,6 +24,10 @@ inst:annotation3  bcfOWL:hasAuthor        project:Jyrki .
 inst:annotation3  bcfOWL:hasDate          "2021-11-03T10:39:00.938Z"^^xsd:dateTime .
 inst:annotation3  bcfOWL:hasState         bcfOWL:wasAdded .
 
+inst:annotation-1  bcfOWL:hasAuthor        project:Jyrki .                                                     
+inst:annotation-1  bcfOWL:hasDate          "2021-11-03T10:39:00.938Z"^^xsd:dateTime  .
+inst:annotation-1  bcfOWL:hasState         bcfOWL:wasAdded .
+
 
 project:Topic_1        a                bcfOWL:Topic  {|
                                                         bcfOWL:change inst:annotation-1
